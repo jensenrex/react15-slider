@@ -11,9 +11,17 @@ function App() {
     if(index<0){
       setIndex(lastIndex); 
     }
-
+    if (index > lastIndex) {
+      setIndex(0); 
+    }
   }, [index, people])
   
+  useEffect(()=>{
+    let slider = setInterval(()=>{
+      setIndex(index+1)
+    }, 4000);
+    return ()=> clearInterval(slider); 
+  }, [index])
   return <section className="section">
     <div className="title">
       <h2>
